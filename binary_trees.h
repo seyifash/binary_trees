@@ -2,6 +2,8 @@
 #define _BINARY_TREES_H_
 
 #include <stddef.h>
+#include <stdbool.h>
+
 
 /**
  * struct binary_tree_s - Binary tree node
@@ -37,4 +39,10 @@ size_t binary_tree_depth(const binary_tree_t *tree);
 size_t binary_tree_leaves(const binary_tree_t *tree);
 size_t binary_tree_nodes(const binary_tree_t *tree);
 int binary_tree_balance(const binary_tree_t *tree);
+int max(int a, int b);
+int tree_height(const binary_tree_t *tree);
+int binary_tree_is_full(const binary_tree_t *tree);
+int binary_tree_is_perfect(const binary_tree_t *tree);
+bool is_perfect(const binary_tree_t *tree, int d, int level);
+int depth(const binary_tree_t *tree);
 #endif
