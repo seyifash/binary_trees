@@ -44,7 +44,9 @@ queue_node_t *create_queue_node(const binary_tree_t *node);
 queue_t *create_queue();
 void enqueue(queue_t *queue, const binary_tree_t *node);
 const binary_tree_t *dequeue(queue_t *queue);
-
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 void binary_tree_print(const binary_tree_t *tree);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
