@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 /**
- * create_queue_node -
- * @node: the node 
+ * create_queue_node - creates a queue
+ * @node: the node
  * Return: returns the created node
  */
 
@@ -16,11 +16,11 @@ queue_node_t *create_queue_node(const binary_tree_t *node)
 
 	if (new_node == NULL)
 	{
-        return NULL;
+	return (NULL);
 	}
 	new_node->node = node;
 	new_node->next = NULL;
-	return new_node;
+	return (new_node);
 }
 
 /**
@@ -35,10 +35,10 @@ queue_t *create_queue()
 	queue = malloc(sizeof(queue_t));
 	if (queue == NULL)
 	{
-        return NULL;
+	return (NULL);
 	}
 	queue->front = queue->rear = NULL;
-	return queue;
+	return (queue);
 }
 
 /**
@@ -48,7 +48,7 @@ queue_t *create_queue()
  */
 void enqueue(queue_t *queue, const binary_tree_t *node)
 {
- 	queue_node_t *new_node;
+	queue_node_t *new_node;
 
 	new_node = create_queue_node(node);
 	if (new_node == NULL)
@@ -78,7 +78,7 @@ const binary_tree_t *dequeue(queue_t *queue)
 
 	if (queue->front == NULL)
 	{
-        return NULL;
+	return (NULL);
 	}
 
 	temp = queue->front;
@@ -91,7 +91,7 @@ const binary_tree_t *dequeue(queue_t *queue)
 	}
 
 	free(temp);
-	return node;
+	return (node);
 }
 /**
  * binary_tree_is_complete - Function to check if a binary tree is complete
@@ -107,7 +107,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	if (tree == NULL)
 	{
-	return 0;
+	return (0);
 	}
 
 	queue = create_queue();
@@ -127,7 +127,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (reached_null)
 	{
 	free(queue);
-	return 0;
+	return (0);
 	}
 
 	enqueue(queue, current->left);
@@ -135,5 +135,5 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	}
 	}
 	free(queue);
-	return 1;
+	return (1);
 }
