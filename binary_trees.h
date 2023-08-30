@@ -21,9 +21,7 @@ typedef struct binary_tree_s
 	struct binary_tree_s *right;
 } binary_tree_t;
 
-void binary_tree_print(const binary_tree_t *);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
-size_t _height(const binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *tree);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);
@@ -47,6 +45,9 @@ bool is_perfect(const binary_tree_t *tree, int d, int level);
 int depth(const binary_tree_t *tree);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+		const binary_tree_t *secoond);
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 
 
 #endif
