@@ -1,31 +1,33 @@
-#include <stddef.h>
-#include <stdio.h>
 #include "binary_trees.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * create_queue_node- creates queqe node
- * @node: the node to be created
- * Return: the new node
+ * create_queue_node -
+ * @node: the node 
+ * Return: returns the created node
  */
+
 queue_node_t *create_queue_node(const binary_tree_t *node)
 {
 	queue_node_t *new_node;
 
 	new_node = malloc(sizeof(queue_node_t));
+
 	if (new_node == NULL)
 	{
-	return (NULL);
+        return NULL;
 	}
 	new_node->node = node;
 	new_node->next = NULL;
-	return (new_node);
+	return new_node;
 }
 
 /**
- * create_queue - Function to create an empty queue
- * Return: the initailised node
+ * create_queue - the creation of a new node
+ * Return: the new node
  */
+
 queue_t *create_queue()
 {
 	queue_t *queue;
@@ -33,25 +35,22 @@ queue_t *create_queue()
 	queue = malloc(sizeof(queue_t));
 	if (queue == NULL)
 	{
-	return (NULL);
+        return NULL;
 	}
-	queue->front = NULL;
-	queue->rear = NULL;
-	return (queue);
+	queue->front = queue->rear = NULL;
+	return queue;
 }
 
 /**
- * enqueue - Function to enqueue a node in the queue
- * @queue: the queue
- * @node: the nodde
+ * enqueue - enqueues the node in the queue
+ * @queue: the pointer to the queue
+ * @node: the node
  */
-
 void enqueue(queue_t *queue, const binary_tree_t *node)
 {
-	queue_node_t *new_node;
+ 	queue_node_t *new_node;
 
 	new_node = create_queue_node(node);
-
 	if (new_node == NULL)
 	{
 	return;
@@ -59,27 +58,27 @@ void enqueue(queue_t *queue, const binary_tree_t *node)
 
 	if (queue->rear == NULL)
 	{
-	queue->front = new_node;
-	queue->rear = new_node;
+	queue->front = queue->rear = new_node;
 	return;
 	}
 
 	queue->rear->next = new_node;
 	queue->rear = new_node;
 }
+
 /**
  * dequeue - Function to dequeue a node from the queue
  * @queue: the queue
- * Return: the node
+ * Return: the dequeue node
  */
 const binary_tree_t *dequeue(queue_t *queue)
 {
-	queue_node_t *temp;
 	const binary_tree_t *node;
+	queue_node_t *temp;
 
 	if (queue->front == NULL)
 	{
-	return (NULL);
+        return NULL;
 	}
 
 	temp = queue->front;
@@ -92,46 +91,49 @@ const binary_tree_t *dequeue(queue_t *queue)
 	}
 
 	free(temp);
-	return (node);
+	return node;
 }
 /**
- * binary_tree_levelorder - goes through binary tree using level-order t
- * @tree: the tree
- * @func: a pointer to a function
+ * binary_tree_is_complete - Function to check if a binary tree is complete
+ * @tree: the tree to check
+ * Return: 1 if complete, 0 if not complete
  */
-void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
+
+int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	queue_t *queue;
+	int reached_null;
 	const binary_tree_t *current;
 
-	if (tree == NULL || func == NULL)
+	if (tree == NULL)
 	{
-	return;
+	return 0;
 	}
 
 	queue = create_queue();
-	if (queue == NULL)
-	{
-	return;
-	}
+	reached_null = 0;
 
 	enqueue(queue, tree);
 
 	while (queue->front != NULL)
 	{
 	current = dequeue(queue);
-	func(current->n);
-
-	if (current->left != NULL)
+	if (current == NULL)
 	{
-	enqueue(queue, current->left);
+	reached_null = 1;
+	}
+	else
+	{
+	if (reached_null)
+	{
+	free(queue);
+	return 0;
 	}
 
-	if (current->right != NULL)
-	{
+	enqueue(queue, current->left);
 	enqueue(queue, current->right);
 	}
 	}
-
 	free(queue);
+	return 1;
 }
