@@ -87,5 +87,6 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_complete(const binary_tree_t *tree);
 bst_t *bst_search(const bst_t *tree, int value);
-
+bst_t *find_min(bst_t *node);
+bst_t *bst_remove(bst_t *root, int value);
 #endif
