@@ -21,6 +21,30 @@ typedef struct binary_tree_s
 	struct binary_tree_s *right;
 } binary_tree_t;
 
+/**
+ * struct queue_node - a queue node
+ * @node: the node pointer
+ * @next: pointer to the next node
+ */
+typedef struct queue_node {
+	binary_tree_t *node;
+	struct queue_node *next;
+} queue_node_t;
+
+/**
+ * struct queue
+ * @front: the front node
+ * @rear: the rear node
+ */
+typedef struct queue {
+	queue_node_t *front;
+	queue_node_t *rear;
+} queue_t;
+queue_node_t *create_queue_node(binary_tree_t *node);
+queue_t *create_queue();
+void enqueue(queue_t *queue, binary_tree_t *node);
+binary_tree_t *dequeue(queue_t *queue);
+
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 void binary_tree_print(const binary_tree_t *tree);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
