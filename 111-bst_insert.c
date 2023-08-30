@@ -14,10 +14,10 @@ bst_t *bst_insert(bst_t **tree, int value)
 	if (tree == NULL)
 	{
 		*tree = binary_tree_node(NULL, value);
-		return *tree;
+		return (*tree);
 	}
-	if (tree != NULL)
-	{
+
+
 		curr = *tree;
 
 		if (curr == NULL)
@@ -48,6 +48,5 @@ bst_t *bst_insert(bst_t **tree, int value)
 				return (NULL);
 			return (curr->right = new);
 		}
-	}
 	return (NULL);
 }
