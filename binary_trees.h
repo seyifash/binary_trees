@@ -30,17 +30,19 @@ typedef struct binary_tree_s binary_tree_t;
  * @node: the node pointer
  * @next: pointer to the next node
  */
-typedef struct queue_node {
+typedef struct queue_node 
+{
 	const binary_tree_t *node;
 	struct queue_node *next;
 } queue_node_t;
 
 /**
- * struct queue
+ * struct queue - the struct for the queue
  * @front: the front node
  * @rear: the rear node
  */
-typedef struct queue {
+typedef struct queue
+{
 	queue_node_t *front;
 	queue_node_t *rear;
 } queue_t;
