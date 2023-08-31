@@ -31,7 +31,7 @@ typedef struct binary_tree_s heap_t;
  * @node: the node pointer
  * @next: pointer to the next node
  */
-typedef struct queue_node 
+typedef struct queue_node
 {
 	const binary_tree_t *node;
 	struct queue_node *next;
