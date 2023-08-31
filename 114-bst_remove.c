@@ -1,6 +1,8 @@
 #include "binary_trees.h"
 #include <stdlib.h>
 
+bst_t *find_min(bst_t *node);
+
 /**
  * bst_remove - Removes a node from a binary search tree.
  * @root: A pointer to the root node of the BSR
